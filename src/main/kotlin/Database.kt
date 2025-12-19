@@ -7,10 +7,10 @@ import org.jetbrains.exposed.sql.Database
 
 fun Application.configureDatabase() {
     val config = HikariConfig().apply {
-        jdbcUrl = "jdbc:postgresql://localhost:5432/ralan"
+        jdbcUrl = "jdbc:postgresql://localhost:5432/ralan_db"
         driverClassName = "org.postgresql.Driver"
         username = "admin"
-        password = System.getenv("DB_PASSWORD") ?: "admin"
+        password = System.getenv("DB_PASSWORD") ?: "3o-NpxNMll"
         maximumPoolSize = 10
     }
 
