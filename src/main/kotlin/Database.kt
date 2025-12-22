@@ -7,7 +7,7 @@ import org.jetbrains.exposed.sql.Database
 
 fun Application.configureDatabase() {
     val config = HikariConfig().apply {
-        jdbcUrl = "jdbc:postgresql://localhost:5432/ralan_db"
+        jdbcUrl = System.getenv("DATABASE_URL") ?: "jdbc:postgresql://localhost:15432/ralan_db"
         driverClassName = "org.postgresql.Driver"
         username = "admin"
         password = System.getenv("DB_PASSWORD") ?: "3o-NpxNMll"
@@ -18,4 +18,3 @@ fun Application.configureDatabase() {
 
     log.info("Database connected successfully")
 }
-
