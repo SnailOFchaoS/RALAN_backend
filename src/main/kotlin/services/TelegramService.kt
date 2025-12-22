@@ -32,8 +32,7 @@ object TelegramService {
     }
     
     private fun buildMessage(formData: ContactFormRequest): String {
-        val dateTime = java.time.LocalDateTime.now()
-            .atZone(java.time.ZoneId.of("Europe/Moscow"))
+        val dateTime = java.time.ZonedDateTime.now(java.time.ZoneOffset.ofHours(3))
             .format(java.time.format.DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss"))
         
         return """
