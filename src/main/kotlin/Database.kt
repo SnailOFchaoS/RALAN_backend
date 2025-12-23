@@ -10,10 +10,10 @@ fun Application.configureDatabase() {
     val config = HikariConfig().apply {
 
         // для работы на сервере
-        // jdbcUrl = System.getenv("DATABASE_URL") ?: "jdbc:postgresql://localhost:5432/ralan_db"
+        jdbcUrl = System.getenv("DATABASE_URL") ?: "jdbc:postgresql://localhost:5432/ralan_db"
         
         // для работы локально
-        jdbcUrl = System.getenv("DATABASE_URL") ?: "jdbc:postgresql://localhost:${System.getenv("DB_PORT") ?: "5432"}/ralan_db"
+        //jdbcUrl = System.getenv("DATABASE_URL") ?: "jdbc:postgresql://localhost:${System.getenv("DB_PORT") ?: "5432"}/ralan_db"
         
         driverClassName = "org.postgresql.Driver"
         username = "admin"
