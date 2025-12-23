@@ -4,10 +4,17 @@ import com.zaxxer.hikari.HikariConfig
 import com.zaxxer.hikari.HikariDataSource
 import io.ktor.server.application.*
 import org.jetbrains.exposed.sql.Database
+import pro.ralan.services.OfferService
 
 fun Application.configureDatabase() {
     val config = HikariConfig().apply {
-        jdbcUrl = System.getenv("DATABASE_URL") ?: "jdbc:postgresql://localhost:5432/ralan_db"
+
+        // для работы на сервере
+        // jdbcUrl = System.getenv("DATABASE_URL") ?: "jdbc:postgresql://localhost:5432/ralan_db"
+        
+        // для работы локально
+        jdbcUrl = System.getenv("DATABASE_URL") ?: "jdbc:postgresql://localhost:${System.getenv("DB_PORT") ?: "5432"}/ralan_db"
+        
         driverClassName = "org.postgresql.Driver"
         username = "admin"
         password = System.getenv("DB_PASSWORD") ?: "3o-NpxNMll"
@@ -15,6 +22,9 @@ fun Application.configureDatabase() {
     }
 
     Database.connect(HikariDataSource(config))
+    
+    // Создаём таблицы, если не существуют
+    OfferService.createTable()
 
     log.info("Database connected successfully")
 }
