@@ -27,6 +27,13 @@ dependencies {
     implementation("io.ktor:ktor-client-cio:3.3.2")
     implementation("io.ktor:ktor-client-content-negotiation:3.3.2")
     
+    // Authentication - JWT
+    implementation("io.ktor:ktor-server-auth:3.3.2")
+    implementation("io.ktor:ktor-server-auth-jwt:3.3.2")
+    
+    // Password hashing
+    implementation("org.mindrot:jbcrypt:0.4")
+    
     // Database - PostgreSQL
     implementation("org.jetbrains.exposed:exposed-core:0.45.0")
     implementation("org.jetbrains.exposed:exposed-dao:0.45.0")
