@@ -4,6 +4,7 @@ import com.zaxxer.hikari.HikariConfig
 import com.zaxxer.hikari.HikariDataSource
 import io.ktor.server.application.*
 import org.jetbrains.exposed.sql.Database
+import pro.ralan.services.AuthService
 import pro.ralan.services.OfferService
 
 fun Application.configureDatabase() {
@@ -24,7 +25,11 @@ fun Application.configureDatabase() {
     Database.connect(HikariDataSource(config))
     
     // Создаём таблицы, если не существуют
+    AuthService.createTable()
     OfferService.createTable()
+    
+    // Создаём админа по умолчанию, если нет пользователей
+    AuthService.seedDefaultAdmin()
 
     log.info("Database connected successfully")
 }
