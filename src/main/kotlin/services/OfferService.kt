@@ -33,6 +33,7 @@ object OfferService {
                 it[price] = request.price
                 it[time] = request.time
                 it[level] = json.encodeToString(request.level)
+                it[important] = request.important
             }
         }
         
@@ -43,7 +44,8 @@ object OfferService {
             date = request.date,
             price = request.price,
             time = request.time,
-            level = request.level
+            level = request.level,
+            important = request.important
         )
     }
     
@@ -82,6 +84,7 @@ object OfferService {
                     request.price?.let { p -> stmt[price] = p }
                     request.time?.let { t -> stmt[time] = t }
                     request.level?.let { lvl -> stmt[level] = json.encodeToString(lvl) }
+                    request.important?.let { imp -> stmt[important] = imp }
                 }
             }
             
@@ -93,7 +96,8 @@ object OfferService {
                 date = request.date ?: existing.date,
                 price = request.price ?: existing.price,
                 time = request.time ?: existing.time,
-                level = request.level ?: existing.level
+                level = request.level ?: existing.level,
+                important = request.important ?: existing.important
             )
         } catch (e: IllegalArgumentException) {
             null
@@ -120,7 +124,8 @@ object OfferService {
             date = row[OffersTable.date],
             price = row[OffersTable.price],
             time = row[OffersTable.time],
-            level = json.decodeFromString<List<String>>(row[OffersTable.level])
+            level = json.decodeFromString<List<String>>(row[OffersTable.level]),
+            important = row[OffersTable.important]
         )
     }
 }

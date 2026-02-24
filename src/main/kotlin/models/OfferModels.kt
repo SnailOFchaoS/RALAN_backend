@@ -10,7 +10,8 @@ data class Offer(
     val date: String,
     val price: Int,
     val time: String,
-    val level: List<String>
+    val level: List<String>,
+    val important: Boolean = false
 )
 
 @Serializable
@@ -20,7 +21,8 @@ data class CreateOfferRequest(
     val discipline: List<String> = emptyList(),
     val date: String = "",
     val time: String = "",
-    val level: List<String> = emptyList()
+    val level: List<String> = emptyList(),
+    val important: Boolean = false
 )
 
 @Serializable
@@ -30,7 +32,8 @@ data class UpdateOfferRequest(
     val date: String? = null,
     val price: Int? = null,
     val time: String? = null,
-    val level: List<String>? = null
+    val level: List<String>? = null,
+    val important: Boolean? = null
 )
 
 @Serializable

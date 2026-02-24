@@ -10,6 +10,7 @@ object OffersTable : Table("offers") {
     val price = integer("price")
     val time = varchar("time", 50)
     val level = text("level") // Хранится как JSON массив
+    val important = bool("important").default(false)
     
     override val primaryKey = PrimaryKey(id)
 }
