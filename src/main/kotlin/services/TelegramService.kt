@@ -40,7 +40,7 @@ object TelegramService {
             |
             |👤 <b>ФИО:</b> ${formData.fullName}
             |📱 <b>Телефон:</b> ${formData.phone}
-            |📧 <b>Email:</b> ${formData.email}
+            |💬 <b>Комментарий:</b> ${formData.comment}
             |📅 <b>Дата:</b> $dateTime
         """.trimMargin()
     }
