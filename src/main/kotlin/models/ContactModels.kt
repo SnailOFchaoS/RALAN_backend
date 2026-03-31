@@ -6,7 +6,7 @@ import kotlinx.serialization.Serializable
 data class ContactFormRequest(
     val fullName: String,
     val phone: String,
-    val email: String
+    val comment: String
 )
 
 @Serializable
